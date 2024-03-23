@@ -6,8 +6,8 @@ const AuthContext = createContext();
 function AuthProvider({ children }) {
 	const navigate = useNavigate();
 	const [user, setUser] = useState(null);
-	const login = ({ username }) => {
-		setUser({ username });
+	const login = (username) => {
+		setUser({ username: username });
 		navigate("/profile");
 	};
 	const logout = () => {

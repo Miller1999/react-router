@@ -6,7 +6,7 @@ const Login = () => {
 	const [userName, setUserName] = useState("");
 	const login = (e) => {
 		e.preventDefault();
-		auth.login({ userName });
+		auth.login(userName);
 	};
 	return (
 		<Fragment>
