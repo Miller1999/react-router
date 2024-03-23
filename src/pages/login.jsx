@@ -7,7 +7,7 @@ const Login = () => {
 	const [userName, setUserName] = useState("");
 	const login = (e) => {
 		e.preventDefault();
-		auth.login(userName);
+		auth.login({ username: userName });
 	};
 
 	if (auth.user) {

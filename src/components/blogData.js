@@ -12,7 +12,7 @@ blogData.push({
 	title: "¿Que es Vue?",
 	slug: "que-es-vue",
 	content: "Vue es el mejor Framework de JavaScript, que lindo Vue",
-	author: "Miller Arias",
+	author: "Miller",
 });
 
 blogData.push({
