@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
@@ -23,4 +23,14 @@ function useAuth() {
 	return auth;
 }
 
-export { AuthProvider, useAuth };
+// Se crea para proteger la redireccion manual
+function AuthRoute({ children }) {
+	const auth = useAuth();
+	if (!auth.user) {
+		return <Navigate to="/login" />;
+	} else {
+		return children;
+	}
+}
+
+export { AuthProvider, useAuth, AuthRoute };

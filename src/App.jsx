@@ -3,7 +3,7 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/home";
 import Blog from "./pages/blog";
 import Profile from "./pages/profile";
-import { AuthProvider } from "./context/auth";
+import { AuthProvider, AuthRoute } from "./context/auth";
 import Menu from "./components/menu";
 import BlogPost from "./components/blogPost";
 import Login from "./pages/login";
@@ -24,8 +24,23 @@ function App() {
 							<Route path=":slug" element={<BlogPost />} />
 						</Route>
 						<Route path="/login" element={<Login />} />
-						<Route path="/logout" element={<Logout />} />
-						<Route path="/profile" element={<Profile />} />
+						<Route
+							path="/logout"
+							element={
+								<AuthRoute>
+									<Logout />
+								</AuthRoute>
+							}
+						/>
+						{/* Al colocar AuthRoute aca hace la validacion aqui y si llega al profile es porque efectivamente el user existe, esto quiere decir que el componente Profile solo se encarga de mostrar no hace verificaciones ni validaciones */}
+						<Route
+							path="/profile"
+							element={
+								<AuthRoute>
+									<Profile />
+								</AuthRoute>
+							}
+						/>
 						<Route path="*" element={<p>Not found</p>} />
 					</Routes>
 				</AuthProvider>

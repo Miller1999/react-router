@@ -1,5 +1,6 @@
 import { Fragment, useState } from "react";
 import { useAuth } from "../context/auth";
+import { Navigate } from "react-router-dom";
 
 const Login = () => {
 	const auth = useAuth();
@@ -8,6 +9,10 @@ const Login = () => {
 		e.preventDefault();
 		auth.login(userName);
 	};
+
+	if (auth.user) {
+		return <Navigate to="/profile" />;
+	}
 	return (
 		<Fragment>
 			<h1>Login</h1>
